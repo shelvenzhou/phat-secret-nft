@@ -1,6 +1,22 @@
 #![cfg_attr(not(feature = "std"), no_std)]
 
+extern crate alloc;
+
+mod crypto_utils;
+
 use ink_lang as ink;
+
+#[derive(Debug)]
+pub enum CryptoError {
+    HkdfExpandError,
+    // Ecdh errors
+    EcdhInvalidSecretKey,
+    EcdhInvalidPublicKey,
+    // Aead errors
+    AeadInvalidKey,
+    AeadEncryptError,
+    AeadDecryptError,
+}
 
 #[ink::contract]
 mod secret_nft {

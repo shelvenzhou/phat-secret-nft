@@ -14,6 +14,18 @@ ink_lang = { version = "3", default-features = false }
 scale = { package = "parity-scale-codec", version = "3", default-features = false, features = ["derive"] }
 scale-info = { version = "2", default-features = false, features = ["derive"], optional = true }
 
+ring = { version = "0.16.20", default-features = false, features = ["alloc"] }
+curve25519-dalek = { version = "2.0", default-features = false }
+schnorrkel = { version = "0.9.1", default-features = false, features = ["preaudit_deprecated", "u64_backend"] }
+aead = { version = "0.4.3", default-features = false, optional = true }
+typenum = { version = "1.14.0", default-features = false, optional = true }
+aead-io = { version = "0.1.2", optional = true }
+
+[dev-dependencies]
+rand = "0.7.3"
+hex = "0.4"
+schnorrkel = { version = "0.9.1", default-features = false, features = ["preaudit_deprecated", "u64_backend", "getrandom"] }
+
 [lib]
 name = "secret_nft"
 path = "lib.rs"
@@ -31,5 +43,6 @@ std = [
     "ink_primitives/std",
     "scale/std",
     "scale-info/std",
+    "aead/std",
 ]
 ink-as-dependency = []
