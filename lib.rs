@@ -6,18 +6,6 @@ mod crypto_utils;
 
 use ink_lang as ink;
 
-#[derive(Debug)]
-pub enum CryptoError {
-    HkdfExpandError,
-    // Ecdh errors
-    EcdhInvalidSecretKey,
-    EcdhInvalidPublicKey,
-    // Aead errors
-    AeadInvalidKey,
-    AeadEncryptError,
-    AeadDecryptError,
-}
-
 #[ink::contract]
 mod secret_nft {
 

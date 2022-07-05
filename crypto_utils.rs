@@ -1,9 +1,19 @@
-use crate::CryptoError;
-
 use alloc::vec::Vec;
 use curve25519_dalek::scalar::Scalar;
 use schnorrkel::keys::{ExpansionMode, Keypair, MiniSecretKey, PublicKey, SecretKey};
 use schnorrkel::{MINI_SECRET_KEY_LENGTH, PUBLIC_KEY_LENGTH, SECRET_KEY_LENGTH};
+
+#[derive(Debug)]
+pub enum CryptoError {
+    HkdfExpandError,
+    // Ecdh errors
+    EcdhInvalidSecretKey,
+    EcdhInvalidPublicKey,
+    // Aead errors
+    AeadInvalidKey,
+    AeadEncryptError,
+    AeadDecryptError,
+}
 
 /// sr25519 key pair
 #[derive(Clone)]
